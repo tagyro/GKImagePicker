@@ -39,7 +39,6 @@
 
 - (void)_actionCancel{
     [self.navigationController popViewControllerAnimated:YES];
-    [self.delegate imageCropController:self didFinishWithCroppedImage:nil];
 }
 
 
@@ -75,12 +74,12 @@
     
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"assets/GKImages/PLCameraSheetButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
-    [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"assets/GKImages/PLCameraSheetButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
+    [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
+    [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
     
     [[self.cancelButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
     [[self.cancelButton titleLabel] setShadowOffset:CGSizeMake(0, 1)];
-    [self.cancelButton setFrame:CGRectMake(0, 0, 70, 30)];
+    [self.cancelButton setFrame:CGRectMake(0, 0, 50, 30)];
     [self.cancelButton setTitle:NSLocalizedString(@"GKIcancel",@"") forState:UIControlStateNormal];
     [self.cancelButton setTitleColor:[UIColor colorWithRed:0.173 green:0.176 blue:0.176 alpha:1] forState:UIControlStateNormal];
     [self.cancelButton setTitleShadowColor:[UIColor colorWithRed:0.827 green:0.831 blue:0.839 alpha:1] forState:UIControlStateNormal];
@@ -92,8 +91,8 @@
     
     self.useButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [self.useButton setBackgroundImage:[[UIImage imageNamed:@"assets/GKImages/PLCameraSheetDoneButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
-    [self.useButton setBackgroundImage:[[UIImage imageNamed:@"assets/GKImages/PLCameraSheetDoneButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
+    [self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
+    [self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
     
     [[self.useButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
     [[self.useButton titleLabel] setShadowOffset:CGSizeMake(0, -1)];
@@ -119,7 +118,10 @@
     
     CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, 54), kCGImageAlphaNoneSkipFirst);
     
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();   
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	  CGGradientRelease(gradient);
+	  CGColorSpaceRelease(colorSpace);
     UIGraphicsEndImageContext();
     
     return viewImage;
@@ -140,7 +142,7 @@
         info.backgroundColor = [UIColor clearColor];
         info.shadowColor = [UIColor colorWithRed:0.827 green:0.831 blue:0.839 alpha:1];
         info.shadowOffset = CGSizeMake(0, 1);
-        info.font = [UIFont boldSystemFontOfSize:14];
+        info.font = [UIFont boldSystemFontOfSize:18];
         [info sizeToFit];
         
         UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithCustomView:self.cancelButton];
@@ -175,7 +177,9 @@
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setNavigationBarHidden:YES];
-    }
+    } else {
+		[self.navigationController setNavigationBarHidden:NO];
+	}
 }
 
 - (void)viewDidUnload{

@@ -89,7 +89,7 @@
         [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
         [self.cancelButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
 		
-        [[self.cancelButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
+        [[self.cancelButton titleLabel] setFont:[UIFont boldSystemFontOfSize:16]];
         [[self.cancelButton titleLabel] setShadowOffset:CGSizeMake(0, 1)];
         [self.cancelButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.cancelButton setTitle:NSLocalizedString(@"GKIcancel",@"") forState:UIControlStateNormal];
@@ -118,7 +118,7 @@
         //[self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
         [self.useButton setBackgroundColor:[UIColor orangeColor]];
 		
-        [[self.useButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
+        [[self.useButton titleLabel] setFont:[UIFont boldSystemFontOfSize:16]];
         [[self.useButton titleLabel] setShadowColor:[UIColor clearColor]];
         [self.useButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.useButton setTitle:NSLocalizedString(@"GKIuse",@"") forState:UIControlStateNormal];
@@ -171,7 +171,7 @@
         if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
             info.text = @"";
         } else {
-            info.text = NSLocalizedString(@"GKImoveAndScale", @"");
+            info.text = @"";
         }
         
         info.textColor = [UIColor colorWithRed:0.173 green:0.173 blue:0.173 alpha:1];

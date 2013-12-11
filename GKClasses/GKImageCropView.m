@@ -296,13 +296,22 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
     CGFloat faktoredHeight = 0.f;
     CGFloat faktoredWidth = 0.f;
     
+    CGFloat zoomScale = 1.0f;
+    
+    CGFloat targetRatio = size.width / size.height;
+    CGFloat imageRatio = width / height;
+    
     if(width > height){
+
+        zoomScale = imageRatio/targetRatio;
         
         faktor = width / size.width;
         faktoredWidth = size.width;
         faktoredHeight =  height / faktor;
         
     } else {
+        
+        zoomScale = targetRatio/imageRatio;
         
         faktor = height / size.height;
         faktoredWidth = width / faktor;
@@ -313,6 +322,10 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
     self.scrollView.frame = CGRectMake(xOffset, yOffset, size.width, size.height);
     self.scrollView.contentSize = CGSizeMake(size.width, size.height);
     self.imageView.frame = CGRectMake(0, floor((size.height - faktoredHeight) * 0.5), faktoredWidth, faktoredHeight);
+
+    self.scrollView.minimumZoomScale = zoomScale;
+    self.scrollView.zoomScale = zoomScale;
+    [self.scrollView updateConstraints];
 }
 
 #pragma mark -

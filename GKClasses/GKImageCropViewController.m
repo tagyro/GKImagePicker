@@ -79,7 +79,7 @@
 		
         [[self.cancelButton titleLabel] setFont:[UIFont boldSystemFontOfSize:16]];
         [[self.cancelButton titleLabel] setShadowOffset:CGSizeMake(0, -1)];
-        [self.cancelButton setFrame:CGRectMake(0, 0, 58, 30)];
+        [self.cancelButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.cancelButton setTitle:NSLocalizedString(@"GKIcancel",@"") forState:UIControlStateNormal];
         [self.cancelButton setTitleShadowColor:[UIColor colorWithRed:0.118 green:0.247 blue:0.455 alpha:1] forState:UIControlStateNormal];
         [self.cancelButton  addTarget:self action:@selector(_actionCancel) forControlEvents:UIControlEventTouchUpInside];
@@ -91,7 +91,7 @@
 		
         [[self.cancelButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
         [[self.cancelButton titleLabel] setShadowOffset:CGSizeMake(0, 1)];
-        [self.cancelButton setFrame:CGRectMake(0, 0, 50, 30)];
+        [self.cancelButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.cancelButton setTitle:NSLocalizedString(@"GKIcancel",@"") forState:UIControlStateNormal];
         [self.cancelButton setTitleColor:[UIColor colorWithRed:0.173 green:0.176 blue:0.176 alpha:1] forState:UIControlStateNormal];
         [self.cancelButton setTitleShadowColor:[UIColor colorWithRed:0.827 green:0.831 blue:0.839 alpha:1] forState:UIControlStateNormal];
@@ -106,19 +106,21 @@
 		
         [[self.useButton titleLabel] setFont:[UIFont boldSystemFontOfSize:16]];
         [[self.useButton titleLabel] setShadowOffset:CGSizeMake(0, -1)];
-        [self.useButton setFrame:CGRectMake(0, 0, 58, 30)];
+        [self.useButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.useButton setTitle:NSLocalizedString(@"GKIuse",@"") forState:UIControlStateNormal];
-        [self.useButton setTitleShadowColor:[UIColor colorWithRed:0.118 green:0.247 blue:0.455 alpha:1] forState:UIControlStateNormal];
+        [self.useButton setTitleShadowColor:[UIColor clearColor] forState:UIControlStateNormal];
         [self.useButton  addTarget:self action:@selector(_actionUse) forControlEvents:UIControlEventTouchUpInside];
+        [self.useButton setBackgroundColor:[UIColor orangeColor]];
     } else {
         self.useButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		
-        [self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
-        [self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
+        //[self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButton.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateNormal];
+        //[self.useButton setBackgroundImage:[[UIImage imageNamed:@"PLCameraSheetDoneButtonPressed.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0] forState:UIControlStateHighlighted];
+        [self.useButton setBackgroundColor:[UIColor orangeColor]];
 		
         [[self.useButton titleLabel] setFont:[UIFont boldSystemFontOfSize:11]];
-        [[self.useButton titleLabel] setShadowOffset:CGSizeMake(0, -1)];
-        [self.useButton setFrame:CGRectMake(0, 0, 50, 30)];
+        [[self.useButton titleLabel] setShadowColor:[UIColor clearColor]];
+        [self.useButton setFrame:CGRectMake(0, 0, 120, 30)];
         [self.useButton setTitle:NSLocalizedString(@"GKIuse",@"") forState:UIControlStateNormal];
         [self.useButton setTitleShadowColor:[UIColor colorWithRed:0.118 green:0.247 blue:0.455 alpha:1] forState:UIControlStateNormal];
         [self.useButton  addTarget:self action:@selector(_actionUse) forControlEvents:UIControlEventTouchUpInside];

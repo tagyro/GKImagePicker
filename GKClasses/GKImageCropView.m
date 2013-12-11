@@ -98,10 +98,8 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
 
 - (UIImage *)croppedImage{
     
+    // fix the orientation
     UIImage *fixedOrientation = [self.imageToCrop fixOrientation];
-    //  save original picture and the new version with a fixed orientation in the Document's app directory
-//    [FRSHelper saveInDocumentsImage:self.imageToCrop withName:@"imageToCrop"];
-//    [FRSHelper saveInDocumentsImage:fixedOrientation withName:@"fixedOrientationImage"];
     
     //Calculate rect that needs to be cropped
     CGRect visibleRect = self.resizableCropArea ? [self _calcVisibleRectForResizeableCropArea] : [self _calcVisibleRectForCropArea];
@@ -114,8 +112,6 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
     CGImageRef imageRef = CGImageCreateWithImageInRect([fixedOrientation CGImage], visibleRect);
     UIImage *result = [UIImage imageWithCGImage:imageRef scale:fixedOrientation.scale orientation:fixedOrientation.imageOrientation];
     CGImageRelease(imageRef);
-    //  save the result image after cropping in the Document's app directory
-//    [FRSHelper saveInDocumentsImage:result withName:@"result"];
     
     return result;
 }
